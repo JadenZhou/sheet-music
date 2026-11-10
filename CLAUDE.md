@@ -54,5 +54,6 @@ links its issue, and never push to `main`. Before committing, run
 `uv run pytest` and `bin/score`.
 
 ## Plans
-Feature ideas and their design (fingering engine, difficulty levels) are in `ROADMAP.md`.
-Read it before starting new feature work, and update it when something gets done.
+Work is tracked in GitHub issues and milestones (`gh issue list`). The design behind
+features (fingering engine, difficulty levels) is in `ROADMAP.md`. Read the relevant
+section before starting feature work, and link the issue in your PR (`Closes #N`).
