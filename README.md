@@ -24,4 +24,4 @@ An editor with live preview helps: [Frescobaldi](https://frescobaldi.org) (free)
 |---|---|
 | Chopin, Nocturne Op. 9 No. 2 | Mutopia #1590 (CC BY-SA 3.0) |
 
-Project conventions for contributors (and for Claude Code) are in `CLAUDE.md`.
+Project conventions for contributors (and for Claude Code) are in `CLAUDE.md`; planned features are in `ROADMAP.md`.

@@ -43,3 +43,7 @@ LilyPond 2.26 (`brew install lilypond`). Scores start with `\version "2.26.0"`.
 To look at a page, render a PNG:
 `lilypond -s -I "$PWD/style" --png -dresolution=110 -o /tmp/x scores/<file>.ly`.
 Do this before telling anyone that a layout change works.
+
+## Plans
+Feature ideas and their design (fingering engine, difficulty levels) are in `ROADMAP.md`.
+Read it before starting new feature work, and update it when something gets done.
