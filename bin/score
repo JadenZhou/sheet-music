@@ -1,0 +1,16 @@
+#!/bin/sh
+# Compile scores to PDF with the house style.
+#   bin/score                      -> every scores/*.ly
+#   bin/score scores/foo.ly        -> just that one
+#   bin/score --share [files]      -> include source/licence credits (for sharing)
+# Output goes to out/.
+set -e
+root="$(cd "$(dirname "$0")/.." && pwd)"
+lilypond="$(command -v lilypond || echo /opt/homebrew/bin/lilypond)"
+if [ "$1" = "--share" ]; then export SHOW_CREDITS=1; shift; fi
+[ $# -eq 0 ] && set -- "$root"/scores/*.ly
+mkdir -p "$root/out"
+for f in "$@"; do
+  "$lilypond" -s -I "$root/style" -o "$root/out/$(basename "$f" .ly)" "$f"
+  echo "built out/$(basename "$f" .ly).pdf"
+done
