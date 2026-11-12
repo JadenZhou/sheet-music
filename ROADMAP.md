@@ -1,6 +1,8 @@
 # Roadmap
 
-Ideas for where this project goes. Nothing here is built yet unless marked done.
+The **design** behind planned features. **Tracking** (who's doing what, status) lives
+in GitHub issues and milestones; each section here has matching issues. When something
+ships, close its issue and move it to Done below.
 
 ## Done
 - House style (`style/house.ily`): fonts, spacing, bracket pedals, light fingerings,
@@ -8,11 +10,9 @@ Ideas for where this project goes. Nothing here is built yet unless marked done.
 - Chopin Nocturne Op. 9 No. 2, imported from Mutopia and cleaned up.
 
 ## Next
-- [ ] Import Nocturne Op. 9 No. 1 (source already in `sources/`).
-- [ ] Kravchuk-style pedalling: one continuous line with a notch at each change,
-      instead of releasing just before each new press.
-- [ ] Scan → score: turn IMSLP scans into music with OMR (Audiveris), then MusicXML,
-      then `musicxml2ly`, for pieces Mutopia/OpenScore don't have.
+- Import Nocturne Op. 9 No. 1 (#2)
+- Kravchuk-style pedalling: one continuous line with a notch at each change (#3)
+- Scan → score with OMR (Audiveris → MusicXML → `musicxml2ly`) (#10)
 
 ## Fingering engine
 Suggest fingerings automatically, personalised to the player's hand size and habits.

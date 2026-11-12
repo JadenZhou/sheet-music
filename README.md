@@ -4,7 +4,8 @@ Piano sheet music, typeset with [LilyPond](https://lilypond.org) in one consiste
 
 ## Setup
 ```sh
-brew install lilypond
+brew install lilypond uv
+uv sync              # Python tools (score checks, analysis)
 bin/score            # builds every score into out/
 open out/chopin-op9-2.pdf
 ```
@@ -24,4 +25,4 @@ An editor with live preview helps: [Frescobaldi](https://frescobaldi.org) (free)
 |---|---|
 | Chopin, Nocturne Op. 9 No. 2 | Mutopia #1590 (CC BY-SA 3.0) |
 
-Project conventions for contributors (and for Claude Code) are in `CLAUDE.md`; planned features are in `ROADMAP.md`.
+How we work together: `CONTRIBUTING.md`. Project rules (also read by Claude Code): `CLAUDE.md`. Planned features: `ROADMAP.md`. Big decisions: `docs/decisions/`.

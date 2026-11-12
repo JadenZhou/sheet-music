@@ -10,6 +10,9 @@ consistent house style. Sources are public-domain pieces, mostly from Mutopia.
 - `sources/` — original downloads, kept untouched for reference.
 - `bin/score [--share] [files]` — builds PDFs into `out/` (gitignored).
 - `reference/` — other editions used as visual references (gitignored; copyrighted).
+- `src/sheetmusic/` — Python tooling (uv, ruff, pytest). `uv run sheetmusic lint`
+  checks scores against the rules below. When you add a rule here, add it to
+  `lint.py` too, if a machine can check it.
 
 ## Requirements
 LilyPond 2.26 (`brew install lilypond`). Scores start with `\version "2.26.0"`.
@@ -44,6 +47,13 @@ To look at a page, render a PNG:
 `lilypond -s -I "$PWD/style" --png -dresolution=110 -o /tmp/x scores/<file>.ly`.
 Do this before telling anyone that a layout change works.
 
+## Workflow
+Follow `CONTRIBUTING.md`: work on a branch, use Conventional Commits, open a PR that
+links its issue, and never push to `main`. Before committing, run
+`uv run sheetmusic lint`, `uv run ruff check .`, `uv run ruff format --check .`,
+`uv run pytest` and `bin/score`.
+
 ## Plans
-Feature ideas and their design (fingering engine, difficulty levels) are in `ROADMAP.md`.
-Read it before starting new feature work, and update it when something gets done.
+Work is tracked in GitHub issues and milestones (`gh issue list`). The design behind
+features (fingering engine, difficulty levels) is in `ROADMAP.md`. Read the relevant
+section before starting feature work, and link the issue in your PR (`Closes #N`).
