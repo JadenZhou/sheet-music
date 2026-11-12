@@ -15,8 +15,10 @@ bin/score               # build PDFs into out/
    `feat: import Nocturne Op. 9 No. 1`, `fix: pedal bracket overlap in bar 5`.
 4. **Open a pull request** with `Closes #<issue>` in the description. Fill in the
    template and add screenshots for anything visual.
-5. **CI must pass, and the other person approves.** `main` is protected, so nobody
-   pushes to it directly.
+5. **CI must pass.** `main` is protected, so nobody pushes to it directly. If the PR
+   touches code (`src/`, `tests/`, `style/`, `bin/`, `.github/`, `pyproject.toml`,
+   `uv.lock`, listed in `.github/CODEOWNERS`), the other person must also approve.
+   Scores and docs merge once CI is green, but ask for a review whenever you want one.
 6. **Squash-merge** and delete the branch.
 
 Keep PRs small: one piece, one feature, or one style change each.

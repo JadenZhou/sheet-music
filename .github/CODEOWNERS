@@ -1,0 +1,9 @@
+# Changes to these paths need an approval from the other person (branch protection
+# requires a code-owner review). Everything else merges once CI passes. See CONTRIBUTING.md.
+/src/            @JadenZhou @suxls
+/tests/          @JadenZhou @suxls
+/style/          @JadenZhou @suxls
+/bin/            @JadenZhou @suxls
+/.github/        @JadenZhou @suxls
+/pyproject.toml  @JadenZhou @suxls
+/uv.lock         @JadenZhou @suxls
