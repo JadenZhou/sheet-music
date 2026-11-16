@@ -8,17 +8,17 @@ bin/score               # build PDFs into out/
 ```
 
 ## Workflow
-1. **Pick or open an issue.** Assign it to yourself so you don't both work on it.
+1. **Pick or open an issue.** Assign it to yourself so nobody else starts the same work.
 2. **Branch from `main`:** `git switch -c feat/op9-1-import`.
    Prefixes: `feat/`, `fix/`, `docs/`, `chore/`.
 3. **Commit with [Conventional Commits](https://www.conventionalcommits.org):**
    `feat: import Nocturne Op. 9 No. 1`, `fix: pedal bracket overlap in bar 5`.
 4. **Open a pull request** with `Closes #<issue>` in the description. Fill in the
    template and add screenshots for anything visual.
-5. **CI must pass.** `main` is protected, so nobody pushes to it directly. If the PR
-   touches code (`src/`, `tests/`, `style/`, `bin/`, `.github/`, `pyproject.toml`,
-   `uv.lock`, listed in `.github/CODEOWNERS`), the other person must also approve.
-   Scores and docs merge once CI is green, but ask for a review whenever you want one.
+5. **Review, then CI.** `main` is protected: nobody pushes to it directly, and both CI
+   checks must pass. Approvals aren't required, since the project is mostly maintained
+   by one person. Instead, run `/code-review` on every code PR and fix what it finds
+   before merging. Request a human review whenever another contributor is around.
 6. **Squash-merge** and delete the branch.
 
 Keep PRs small: one piece, one feature, or one style change each.
@@ -32,10 +32,10 @@ bin/score
 ```
 
 ## Working with Claude Code
-- `CLAUDE.md` holds the project rules, and both of our Claude sessions read it. When
+- `CLAUDE.md` holds the project rules, and every contributor's Claude session reads it. When
   you correct Claude about something project-specific, add it there in the same PR.
-- Claude can write the code, but a human still reviews every PR. Running
-  `/code-review` before asking for review catches the easy problems.
+- Claude can write the code, but the author still reads every diff before merging.
+  `/code-review` catches the easy problems first.
 
 ## Decisions
 Big choices are written up in `docs/decisions/`. Add a new numbered file when you
