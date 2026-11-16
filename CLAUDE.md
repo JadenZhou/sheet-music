@@ -29,6 +29,9 @@ LilyPond 2.26 (`brew install lilypond`). Scores start with `\version "2.26.0"`.
 - **Credits:** Mutopia files are mostly CC BY-SA. Every score header needs `source`
   and `license` fields. Credits print only with `bin/score --share`. Use that for
   anything given to other people.
+- **Licenses:** code is MIT (`LICENSE`); scores are CC BY-SA 3.0 (`LICENSE-SCORES`).
+  Only import sources whose license allows that: public domain, CC0, CC BY, or CC BY-SA.
+  Never NC/ND or unlicensed sources. Note any other license in the score's header and the README table.
 - **Never commit** another publisher's edition (PDFs or scans in `reference/`) or
   fingerings copied from a copyrighted edition.
 

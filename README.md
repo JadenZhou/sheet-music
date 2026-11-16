@@ -25,4 +25,11 @@ An editor with live preview helps: [Frescobaldi](https://frescobaldi.org) (free)
 |---|---|
 | Chopin, Nocturne Op. 9 No. 2 | Mutopia #1590 (CC BY-SA 3.0) |
 
+## License
+- **Code** (`src/`, `bin/`, `tests/`, `style/`, CI): [MIT](LICENSE).
+- **Scores** (`scores/`, `sources/`): [CC BY-SA 3.0](LICENSE-SCORES). They are derived
+  from Mutopia editions under that license, so share-alike applies: copies and
+  modified versions must keep the credits and the same license. Each score's `source`
+  and `license` header fields say where it came from (printed with `bin/score --share`).
+
 How we work together: `CONTRIBUTING.md`. Project rules (also read by Claude Code): `CLAUDE.md`. Planned features: `ROADMAP.md`. Big decisions: `docs/decisions/`.
