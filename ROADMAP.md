@@ -14,15 +14,26 @@ ships, close its issue and move it to Done below.
 - Kravchuk-style pedalling: one continuous line with a notch at each change (#3)
 - Scan → score with OMR (Audiveris → MusicXML → `musicxml2ly`) (#10)
 
-## Fingering engine
-Suggest fingerings automatically, personalised to the player's hand size and habits.
-- Prior work: Parncutt et al. 1997 (scoring fingerings by how hard they are on the
-  hand), dynamic-programming search, Nakamura et al. 2020 + the PIG dataset of
-  pianist-fingered pieces, the open-source `pianoplayer`.
-- Output is just LilyPond fingering (`c4-3`), so it plugs into the existing scores.
-- A fingering's cost is also a difficulty measure (see below).
+## Fingering engine (v0.2, tracking issue #9)
+Suggest fingerings automatically, measured against how pianists actually finger, then
+print them on our scores. This is the project's main technical piece.
+- **Evaluate first.** Load the PIG dataset (#11) and build `sheetmusic eval` with
+  Nakamura's match rates and simple baselines (#12) before writing the engine, so every
+  engine PR reports a number on the same held-out split. PIG is research-use only:
+  download it into `data/` (gitignored) and never commit it.
+- **Engine:** a fingering is a path through finger states, and each step has a cost
+  (stretch, thumb crossing, weak fingers). Viterbi/DP finds the cheapest path. Order:
+  hand-written Parncutt-style costs for single lines (#13) → chords (#14) → costs
+  learned from PIG, reproducing the published HMM baseline (#15).
+- **Results** go in `docs/results.md` (#16). Only held-out numbers count.
+- **On our scores:** generated fingerings go in a separate layer so the cleaned `.ly`
+  stays untouched (#17). A hand-size setting personalises the output (#18).
+- Later: sequence model (BiLSTM/CRF) compared against the DP (#19).
+- Prior work: Parncutt et al. 1997, Nakamura et al. 2020 + PIG, `pianoplayer`.
+- A fingering's cost is also a difficulty measure (see below), so this comes before
+  the difficulty work.
 
-## Difficulty levels
+## Difficulty levels (v0.3 heat map, v0.4 levels)
 Two halves: measure difficulty, then reduce it.
 
 ### 1. Measuring (per bar)
