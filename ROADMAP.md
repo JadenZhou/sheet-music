@@ -80,6 +80,24 @@ cheapest move that brings it under the target, until every bar fits.
 Difficulty scorer + per-bar heat map for Op. 9 No. 2, then a three-level edition:
 original / intermediate (no ornaments, short cadenza) / easy (melody + block chords).
 
+## Aesthetics editor (#25, #26)
+Change how scores look interactively: sizes, spacing, fonts, markings, page and
+device presets, with a live preview of a short passage.
+- `house.ily` reads its settings through `pref`, so a wrapper file can set them before
+  the score loads. `bin/score --set staffSize=20` (#26) is the first step and needs no UI.
+- Only global settings, never dragging single notes. If a passage looks wrong, fix the
+  house style.
+- Later: presets, side-by-side comparison, "fit on N pages" search, saving a setup as a
+  named `.ily` style.
+
+## Edition audit (#27)
+Use our own tools to measure whether popular editions are any good: correct notes
+(compared with a trusted edition or a recording), readability, engraving problems,
+fingering quality (cost under our engine), playability, and how faithful
+arrangements are. "Good" is partly taste, so check the metrics against pianists'
+A/B preferences. Pilot: 5 popular Op. 9 No. 2 editions. Copyrighted editions are
+analysed locally only, never committed.
+
 ## Other "good sheet music" ideas
 - Page turns placed where a hand is free.
 - Layouts for each device (print, iPad portrait, two-page spread).
