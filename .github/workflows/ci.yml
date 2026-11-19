@@ -15,6 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
+      - name: No private scores committed
+        run: |
+          tracked="$(git ls-files private | grep -v '^private/README.md$' || true)"
+          if [ -n "$tracked" ]; then echo "Private (copyrighted) files are committed:"; echo "$tracked"; exit 1; fi
       - run: uv sync --locked
       - run: uv run ruff check .
       - run: uv run ruff format --check .

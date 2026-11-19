@@ -15,6 +15,7 @@ open out/chopin-op9-2.pdf
 |---|---|
 | Build one piece | `bin/score scores/chopin-op9-2.ly` |
 | Build a copy to share (includes source/licence credits) | `bin/score --share` |
+| Print a copyrighted piece for yourself | put the `.ly` in `private/` (never committed), then `bin/score` |
 | Change the look of everything (fonts, size, pedals...) | edit the preferences block at the top of `style/house.ily` |
 | Change notes or fingering | edit `scores/<piece>.ly`. A fingering is written `-3` after a note, e.g. `c4-3` |
 
