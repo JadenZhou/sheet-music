@@ -1,16 +1,32 @@
 #!/bin/sh
 # Compile scores to PDF with the house style.
-#   bin/score                      -> every scores/*.ly
+#   bin/score                      -> every scores/*.ly, plus private/*.ly if you have any
 #   bin/score scores/foo.ly        -> just that one
-#   bin/score --share [files]      -> include source/licence credits (for sharing)
-# Output goes to out/.
+#   bin/score --share [files]      -> include source/licence credits (for sharing);
+#                                     never builds private/ scores
+# Output goes to out/ (private scores to out/private/).
 set -e
 root="$(cd "$(dirname "$0")/.." && pwd)"
 lilypond="$(command -v lilypond || echo /opt/homebrew/bin/lilypond)"
-if [ "$1" = "--share" ]; then export SHOW_CREDITS=1; shift; fi
-[ $# -eq 0 ] && set -- "$root"/scores/*.ly
-mkdir -p "$root/out"
+share=
+if [ "$1" = "--share" ]; then share=1; export SHOW_CREDITS=1; shift; fi
+if [ $# -eq 0 ]; then
+  set -- "$root"/scores/*.ly
+  if [ -z "$share" ]; then
+    for f in "$root"/private/*.ly; do [ -e "$f" ] && set -- "$@" "$f"; done
+  fi
+fi
 for f in "$@"; do
-  "$lilypond" -s -I "$root/style" -o "$root/out/$(basename "$f" .ly)" "$f"
-  echo "built out/$(basename "$f" .ly).pdf"
+  case "$(cd "$(dirname "$f")" && pwd)" in
+    "$root/private"*)
+      if [ -n "$share" ]; then
+        echo "refusing to build $f with --share: private scores are for personal use only" >&2
+        exit 1
+      fi
+      out="out/private" ;;
+    *) out="out" ;;
+  esac
+  mkdir -p "$root/$out"
+  "$lilypond" -s -I "$root/style" -o "$root/$out/$(basename "$f" .ly)" "$f"
+  echo "built $out/$(basename "$f" .ly).pdf"
 done

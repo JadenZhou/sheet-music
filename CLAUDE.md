@@ -34,6 +34,8 @@ LilyPond 2.26 (`brew install lilypond`). Scores start with `\version "2.26.0"`.
   Never NC/ND or unlicensed sources. Note any other license in the score's header and the README table.
 - **Never commit** another publisher's edition (PDFs or scans in `reference/`) or
   fingerings copied from a copyrighted edition.
+- **Copyrighted pieces** (e.g. Einaudi) go only in `private/`, which is gitignored. Never
+  move them to `scores/`, never `git add -f` them, and never build them with `--share`.
 
 ## Importing a new piece from Mutopia
 1. Download the `.ly` into `sources/`.
